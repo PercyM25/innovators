@@ -1,5 +1,627 @@
-<!doctype html><html lang="en-ZA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Web development services from THE INNOVATORS."><title>Web Development | THE INNOVATORS</title><link rel="stylesheet" href="../assets/css/style.css"></head><body>
-<header class="site-header"><div class="container navbar"><a class="brand" href="../index.html"><span class="brand-mark">TI</span><span class="brand-text">THE INNOVATORS</span></a><button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="nav-links"><a href="../index.html">Home</a><a href="../about.html">About Us</a><a class="active" href="../services.html">Services</a><a href="../team.html">Our Team</a><a href="../contact.html">Contact Us</a><a class="btn" href="../contact.html">Get in Touch</a></nav></div></header>
-<main><section class="page-banner"><div class="container"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../services.html">Services</a> / Web Development</div><span class="eyebrow">Our Service</span><h1>Web Development</h1></div></section>
-<section class="section"><div class="container detail-layout"><article class="detail-main"><span class="eyebrow">Service Overview</span><h2>Modern websites that work beautifully</h2><h3>About This Service</h3><p>Creating modern, responsive and user-friendly websites for individuals, businesses and organisations.</p><h3>What We Offer</h3><ul class="check-list"><li>Business websites</li><li>Portfolio websites</li><li>Website redesign</li><li>Landing pages</li><li>Website maintenance</li></ul><h3>Benefits of This Service</h3><p>[Add the benefits of this service for clients.]</p><h3>Problems We Help Solve</h3><p>[Add the website and online presence challenges this service can address.]</p><h3>Content to Expand</h3><p>[Assigned team member: Add project process, example features, pricing approach and relevant portfolio information here.]</p></article><aside class="card detail-aside"><h3>Interested in this service?</h3><p>Contact THE INNOVATORS to discuss your website requirements.</p><a class="btn" href="../contact.html">Contact Us</a></aside></div></section><section class="section cta"><div class="container"><h2>Let's build your website</h2><p>Tell us what you need and we can discuss a suitable next step.</p><a class="btn" href="../contact.html">Contact Us</a></div></section><section class="section section-light"><div class="container"><a class="btn btn-outline" href="../services.html">Back to Services</a></div></section></main>
-<footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="brand" href="../index.html"><span class="brand-mark">TI</span><span>THE INNOVATORS</span></a><p>Technology-focused solutions for learners, businesses and communities.</p></div><div><h3 class="footer-title">Quick Links</h3><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../services.html">Our Services</a></li><li><a href="../team.html">Our Team</a></li><li><a href="../contact.html">Contact Us</a></li></ul></div><div><h3 class="footer-title">Other Services</h3><ul class="footer-links"><li><a href="it-support.html">IT Support</a></li><li><a href="design.html">Graphic Design</a></li><li><a href="networking.html">Networking</a></li><li><a href="marketing.html">Digital Marketing</a></li></ul></div><div><h3 class="footer-title">Contact</h3><p>Business email: [To be provided]<br>Phone: [To be provided]</p></div></div><div class="footer-bottom">&copy; <span data-current-year></span> THE INNOVATORS.</div></div></footer><script src="../assets/js/script.js"></script></body></html>
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore static websites, WordPress sites and custom web applications from THE INNOVATORS. Compare starting prices and estimate your project cost.">
+  <title>Web Development Services | THE INNOVATORS</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .package-grid { align-items:stretch; }
+    .package-card { border-top:4px solid var(--blue); }
+    .package-card .icon-box { flex:0 0 52px; }
+    .package-price { color:var(--navy); font-size:1.55rem; font-weight:850; margin:4px 0 16px; }
+    .package-price span { display:block; color:var(--muted); font-size:.84rem; font-weight:600; }
+    .package-card .check-list { margin-top:8px; }
+    .package-card .btn { margin-top:14px; align-self:flex-start; }
+    .web-app-card { position:relative; border:2px solid var(--cyan); border-top-width:5px; background:var(--navy); color:var(--white); box-shadow:var(--shadow); }
+    .web-app-card h3, .web-app-card .package-price { color:var(--white); }
+    .web-app-card .package-price span, .web-app-card p { color:#d5e4f2; }
+    .web-app-card .icon-box { background:var(--cyan); color:var(--navy); }
+    .web-app-card .check-list li { border-color:rgba(255,255,255,.17); }
+    .web-app-card .check-list li::before { border-color:var(--cyan); }
+    .web-app-card .btn { background:var(--cyan); color:var(--navy); }
+    .estimate-layout { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr); gap:28px; align-items:start; }
+    .estimate-panel { background:var(--white); border:1px solid var(--border); border-radius:var(--radius); padding:28px; }
+    .estimate-output { position:sticky; top:104px; background:var(--navy); color:var(--white); border-radius:var(--radius); padding:28px; }
+    .estimate-output h3, .estimate-output strong { color:var(--white); }
+    .estimate-output p { color:#d5e4f2; }
+    .estimate-range { color:var(--cyan); font-size:clamp(1.7rem,3vw,2.4rem); font-weight:850; line-height:1.2; margin:12px 0; }
+    .estimate-breakdown { padding-left:20px; color:#e4edf5; }
+    .estimate-breakdown li { margin:8px 0; }
+    .form-select { width:100%; min-height:48px; border:1px solid #cbd5e1; border-radius:8px; background:var(--white); padding:10px 12px; color:var(--text); }
+    .form-select:focus { outline:3px solid rgba(56,189,248,.45); border-color:var(--blue); }
+    .option-list { display:grid; gap:10px; }
+    .option-item { display:flex; gap:10px; align-items:flex-start; padding:12px; border:1px solid var(--border); border-radius:8px; background:var(--white); color:var(--text); }
+    .option-item input { width:auto; flex:0 0 auto; margin-top:5px; accent-color:var(--blue); }
+    .option-item strong { display:block; color:var(--navy); }
+    .feature-set { margin:18px 0; padding:16px; border:1px solid var(--border); border-radius:10px; }
+    .feature-set legend { padding:0 8px; color:var(--navy); font-weight:750; }
+    .feature-set[hidden] { display:none; }
+    .estimate-note { padding:14px; border-radius:8px; background:#eaf2ff; color:var(--navy); font-size:.94rem; }
+    .process-card { height:100%; }
+    .process-number { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:var(--navy); color:var(--cyan); font-weight:850; margin-bottom:16px; }
+    .payment-note { padding:16px; background:#eaf2ff; border-left:4px solid var(--blue); border-radius:8px; color:var(--navy); }
+    .form-status { display:none; }
+    .enquiry-summary { margin-top:22px; }
+    .enquiry-summary textarea { min-height:220px; }
+    .enquiry-summary .btn { margin-top:10px; }
+    @media (max-width:980px) {
+      .estimate-layout { grid-template-columns:1fr; }
+      .estimate-output { position:static; }
+      .package-grid { grid-template-columns:1fr 1fr; }
+      .web-app-card { grid-column:1/-1; }
+    }
+    @media (max-width:760px) {
+      .package-grid { grid-template-columns:1fr; }
+      .web-app-card { grid-column:auto; }
+      .estimate-panel, .estimate-output { padding:22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="../index.html"><span class="brand-mark">TI</span><span class="brand-text">THE INNOVATORS</span></a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About Us</a>
+        <a class="active" href="../services.html">Services</a>
+        <a href="../team.html">Our Team</a>
+        <a href="../contact.html">Contact Us</a>
+        <a class="btn" href="../contact.html">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../services.html">Services</a> / Web Development</div>
+        <span class="eyebrow">Web Development by Gift Mathibela</span>
+        <h1>Websites built for your next step.</h1>
+        <p>From a clear online starting point to a custom digital platform, choose a web solution that fits your goals.</p>
+        <a class="btn" href="#estimate">Calculate My Website Cost</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Choose your service</span>
+          <h2>Web development for every stage of growth</h2>
+          <p>All prices are starting prices in South African Rand. Final scope, features and delivery dates are agreed in a written quotation before work begins.</p>
+        </div>
+        <div class="grid-3 package-grid">
+          <article class="card service-card package-card">
+            <div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18m-13-3h.01M7 13h4m-4 3h7"/></svg></div>
+            <h3>Static Website Development</h3>
+            <p class="package-price">From R3,500<span>Once-off project pricing</span></p>
+            <p>A fast, straightforward website for sharing information and helping customers find your business online.</p>
+            <ul class="check-list">
+              <li>Landing pages and portfolios</li>
+              <li>Business and informational websites</li>
+              <li>Estimator baseline: up to 5 pages</li>
+            </ul>
+            <a class="btn btn-outline" href="#estimate" data-select-package="static">Get Started</a>
+          </article>
+
+          <article class="card service-card package-card">
+            <div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v15H4zM4 9h16M8 5v4m-1 5h5m-5 3h9"/></svg></div>
+            <h3>WordPress Website Development</h3>
+            <p class="package-price">From R7,500<span>Once-off project pricing</span></p>
+            <p>A manageable website that lets your team update pages, publish articles and maintain content.</p>
+            <ul class="check-list">
+              <li>Business websites with editable pages</li>
+              <li>Publishing and blog capabilities</li>
+              <li>Estimator baseline: up to 5 pages</li>
+            </ul>
+            <a class="btn btn-outline" href="#estimate" data-select-package="wordpress">Get Started</a>
+          </article>
+
+          <article class="card service-card package-card web-app-card">
+            <div class="icon-box" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18m-13 4h3m-3 3h7m3-4v4"/></svg></div>
+            <span class="eyebrow" style="color:var(--cyan)">Advanced solutions</span>
+            <h3>Custom Web Application Development</h3>
+            <p class="package-price">From R25,000<span>Scoped to your requirements</span></p>
+            <p>Purpose-built systems for workflows and services that need more than a standard website.</p>
+            <ul class="check-list">
+              <li>User registration, login and secure account flows</li>
+              <li>Dashboards, databases and integrations</li>
+              <li>Automated processes and custom features</li>
+              <li>Complex projects begin with a detailed assessment</li>
+            </ul>
+            <a class="btn" href="#estimate" data-select-package="webapp">Plan an Application</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="estimate">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Plan your project</span>
+          <h2>Website Cost Estimator</h2>
+          <p>Choose your project type, size and options to see an indicative price range. Your selections update the estimate immediately.</p>
+        </div>
+
+        <div class="estimate-layout">
+          <div class="estimate-panel">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="website-type">Website type</label>
+                <select class="form-select" id="website-type">
+                  <option value="static">Static website</option>
+                  <option value="wordpress">WordPress website</option>
+                  <option value="webapp">Custom web application</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label id="pages-label" for="page-count">Number of pages</label>
+                <input id="page-count" type="number" min="1" max="40" step="1" value="5" inputmode="numeric">
+              </div>
+              <div class="form-field full">
+                <label for="design-level">Design preference</label>
+                <select class="form-select" id="design-level">
+                  <option value="basic">Basic</option>
+                  <option value="professional">Professional</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+            </div>
+
+            <fieldset class="feature-set" data-feature-set="static">
+              <legend>Static website options</legend>
+              <div class="option-list">
+                <label class="option-item"><input type="checkbox" data-addon="contactForm"><span><strong>Contact form</strong>Let visitors send a project or enquiry request.</span></label>
+                <label class="option-item"><input type="checkbox" data-addon="gallery"><span><strong>Image gallery</strong>Showcase products, projects or photographs.</span></label>
+                <label class="option-item"><input type="checkbox" data-addon="blog"><span><strong>News or article section</strong>Add a structured area for updates.</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="feature-set" data-feature-set="wordpress" hidden>
+              <legend>WordPress options</legend>
+              <div class="option-list">
+                <label class="option-item"><input type="checkbox" data-addon="store"><span><strong>Online store</strong>Product catalogue and shopping features, scoped to your needs.</span></label>
+                <label class="option-item"><input type="checkbox" data-addon="booking"><span><strong>Booking functionality</strong>Let customers request or schedule appointments.</span></label>
+                <label class="option-item"><input type="checkbox" data-addon="migration"><span><strong>Content migration</strong>Move agreed existing content into the new site.</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="feature-set" data-feature-set="webapp" hidden>
+              <legend>Web application functionality</legend>
+              <div class="option-list">
+                <label class="option-item"><input type="checkbox" data-addon="database"><span><strong>Database functionality</strong>Store and manage structured application data.</span></label>
+                <label class="option-item"><input type="checkbox" data-addon="accounts"><span><strong>User accounts and login</strong>Registration and sign-in flows for users.</span></label>
+                <label class="option-item"><input type="checkbox" data-addon="dashboard"><span><strong>Dashboard and reporting</strong>Role-based views of data and activity.</span></label>
+                <label class="option-item"><input type="checkbox" data-addon="automation"><span><strong>Automated processes</strong>Custom workflow logic, assessed against your brief.</span></label>
+                <label class="option-item"><input type="checkbox" id="integrations-toggle" data-addon="integrations"><span><strong>External integrations</strong>Connect with agreed third-party services.</span></label>
+                <div class="form-field" id="integration-count-field" hidden>
+                  <label for="integration-count">Number of integrations to estimate</label>
+                  <input id="integration-count" type="number" min="1" max="10" value="1" inputmode="numeric">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="feature-set">
+              <legend>Optional services</legend>
+              <div class="option-list">
+                <label class="option-item"><input type="checkbox" id="seo-option"><span><strong>SEO setup</strong>Basic on-page and search setup for the agreed scope.</span></label>
+                <label class="option-item"><input type="checkbox" id="content-option"><span><strong>Content creation</strong>Content writing for an agreed initial set of pages.</span></label>
+              </div>
+            </fieldset>
+            <p class="estimate-note">Planning assumptions: starting prices cover up to 5 pages for static and WordPress sites, or 1 primary screen for a web application. Extra pages/screens, selected options and design preference affect the estimate. Hosting, domain registration and ongoing support are excluded unless included in your written quote.</p>
+          </div>
+
+          <aside class="estimate-output" aria-labelledby="estimate-result-title">
+            <span class="eyebrow" style="color:var(--cyan)">Indicative estimate · ZAR</span>
+            <h3 id="estimate-result-title">Your estimated project range</h3>
+            <p class="estimate-range" id="estimate-range" aria-live="polite">R3,500 – R4,500</p>
+            <p id="estimate-type">Static website development</p>
+            <strong>Estimate breakdown</strong>
+            <ul class="estimate-breakdown" id="estimate-breakdown"></ul>
+            <p>The upper end includes a 20% allowance for scope uncertainty, rounded up to the next R500. This is not a final quotation; complex applications need a detailed assessment.</p>
+            <a class="btn" href="#booking">Request a Quote</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">How it works</span>
+          <h2>From first brief to website handover</h2>
+          <p>We agree the requirements, responsibilities and milestones before development starts.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card process-card"><div class="process-number">1</div><h3>Share your requirements</h3><p>Tell us about your business, audience, goals, content and required pages, screens or functionality. Use the estimator as a starting point.</p></article>
+          <article class="card process-card"><div class="process-number">2</div><h3>Review and quotation</h3><p>We clarify the scope, discuss suitable options and provide a written quotation with the confirmed price, deposit, milestones and expected delivery date.</p></article>
+          <article class="card process-card"><div class="process-number">3</div><h3>Build and review</h3><p>After approval and the agreed deposit, work proceeds through development and client review. Feedback and content are handled against the agreed scope.</p></article>
+          <article class="card process-card"><div class="process-number">4</div><h3>Test and refine</h3><p>We review the agreed functionality, check the project with you and resolve in-scope adjustments before handover.</p></article>
+          <article class="card process-card"><div class="process-number">5</div><h3>Approve and settle</h3><p>You approve the agreed deliverables and complete the remaining payment according to the written quotation.</p></article>
+          <article class="card process-card"><div class="process-number">6</div><h3>Delivery and handover</h3><p>We provide the completed website or application and agreed access or handover information. Launch, hosting, training and ongoing support are included only when quoted.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container grid-2">
+        <article>
+          <span class="eyebrow">Customer benefits</span>
+          <h2>A practical partner for your online presence</h2>
+          <ul class="check-list">
+            <li>Give your business a professional place to explain its services and reach customers online.</li>
+            <li>Choose a straightforward static site, an editable WordPress site or a custom application to match your needs.</li>
+            <li>Plan important functions, content and design before committing to a final scope.</li>
+            <li>Keep the project transparent with a written quote, agreed milestones and review points.</li>
+            <li>Start with a clear estimate while reserving complex functionality for proper discovery and assessment.</li>
+          </ul>
+        </article>
+        <aside class="card">
+          <span class="eyebrow">Payment terms</span>
+          <h3>Clear terms before work begins</h3>
+          <p>A 50% deposit is required against the confirmed project quotation before work starts. The remaining balance, payment dates and any milestone terms are stated in the written quote. Changes outside the agreed scope are discussed and priced for approval before additional work begins.</p>
+          <p class="payment-note">No payment gateway is configured on this page. Selecting the deposit enquiry option does not charge you. After reviewing and confirming your project, we will provide the quotation and payment instructions directly.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="booking">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Project enquiry</span>
+          <h2>Ready to get started?</h2>
+          <p>Send your project details for review. You can request a custom quote without committing, or indicate that you would like to discuss the 50% deposit after your quote is confirmed.</p>
+        </div>
+        <div class="contact-layout">
+          <div>
+            <form id="web-project-enquiry">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="client-name">Full name</label>
+                  <input id="client-name" name="fullName" type="text" autocomplete="name" required>
+                </div>
+                <div class="form-field">
+                  <label for="client-email">Email address</label>
+                  <input id="client-email" name="email" type="email" autocomplete="email" required>
+                </div>
+                <div class="form-field">
+                  <label for="client-phone">Phone or WhatsApp number</label>
+                  <input id="client-phone" name="phone" type="tel" autocomplete="tel" required>
+                </div>
+                <div class="form-field">
+                  <label for="package-choice">Selected website service</label>
+                  <select class="form-select" id="package-choice" name="package">
+                    <option value="static">Static Website Development</option>
+                    <option value="wordpress">WordPress Website Development</option>
+                    <option value="webapp">Custom Web Application Development</option>
+                  </select>
+                </div>
+                <div class="form-field full">
+                  <label for="estimated-budget">Estimated budget range</label>
+                  <input id="estimated-budget" name="estimatedBudget" type="text" readonly aria-describedby="budget-help">
+                  <span id="budget-help" class="field-error">Indicative only; final price is confirmed in a written quotation.</span>
+                </div>
+                <div class="form-field full">
+                  <label for="project-description">Project description</label>
+                  <textarea id="project-description" name="projectDescription" required placeholder="Describe your goals, audience, pages or screens, features, content and any systems you need to connect."></textarea>
+                </div>
+                <div class="form-field full">
+                  <label for="completion-date">Desired completion date</label>
+                  <input id="completion-date" name="completionDate" type="date" required>
+                </div>
+                <fieldset class="form-field full feature-set">
+                  <legend>How would you like to proceed?</legend>
+                  <div class="option-list">
+                    <label class="option-item"><input type="radio" name="enquiryType" value="quote" checked><span><strong>Request a Custom Quote</strong>Describe your requirements and receive a confirmed scope and price before deciding.</span></label>
+                    <label class="option-item"><input type="radio" name="enquiryType" value="deposit"><span><strong>Proceed with a Deposit</strong>Ask to discuss the 50% deposit after the project quotation is confirmed. No payment is taken here.</span></label>
+                  </div>
+                </fieldset>
+                <div class="form-field full">
+                  <p class="payment-note" id="deposit-note" hidden>The deposit is 50% of the confirmed quotation, not this estimate. There is no payment gateway on this page. If the project is confirmed, payment instructions will be provided with the quote.</p>
+                  <button class="btn" type="submit" id="enquiry-submit">Prepare Project Enquiry</button>
+                </div>
+              </div>
+              <div class="form-status" id="enquiry-status" role="status" aria-live="polite"></div>
+            </form>
+            <div class="enquiry-summary" id="enquiry-summary-wrap" hidden>
+              <h3>Your enquiry summary</h3>
+              <p>This static page cannot send or save enquiries. Nothing has been submitted to THE INNOVATORS. Copy this summary to keep it and share it through a confirmed company contact channel.</p>
+              <label class="form-field" for="enquiry-summary">Enquiry details</label>
+              <textarea class="form-field" id="enquiry-summary" readonly rows="10"></textarea>
+              <button class="btn btn-outline" id="copy-enquiry-summary" type="button">Copy Enquiry Summary</button>
+            </div>
+          </div>
+
+          <aside class="contact-panel">
+            <span class="eyebrow">A useful first brief</span>
+            <h3>What to include</h3>
+            <ul class="check-list">
+              <li>What your business does and who the website is for.</li>
+              <li>The pages or screens you need and the content you already have.</li>
+              <li>Features, user roles, data needs and third-party integrations.</li>
+              <li>Your preferred style and desired completion date.</li>
+              <li>Any existing website, domain or hosting details relevant to the project.</li>
+            </ul>
+            <p class="estimate-note">Submitting this on-page form prepares a local summary for you to copy. It does not transmit personal or project details to a server.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="container">
+        <h2>Build the right website for your next step.</h2>
+        <p>Explore your options, calculate an indicative range and prepare a project enquiry.</p>
+        <a class="btn" href="#estimate">Calculate My Website Cost</a>
+      </div>
+    </section>
+
+    <section class="section section-light">
+      <div class="container">
+        <a class="btn btn-outline" href="../services.html">Back to Services</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="../index.html"><span class="brand-mark">TI</span><span>THE INNOVATORS</span></a>
+          <p>Technology-focused solutions for learners, businesses and communities.</p>
+        </div>
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../services.html">Our Services</a></li>
+            <li><a href="../team.html">Our Team</a></li>
+            <li><a href="../contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Other Services</h3>
+          <ul class="footer-links">
+            <li><a href="it-support.html">IT Support</a></li>
+            <li><a href="design.html">Graphic Design</a></li>
+            <li><a href="networking.html">Networking</a></li>
+            <li><a href="marketing.html">Digital Marketing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">Contact</h3>
+          <p>Business email: [To be provided]<br>Phone: [To be provided]</p>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; <span data-current-year></span> THE INNOVATORS.</div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
+  <script>
+    (() => {
+      const prices = {
+        static: {
+          name: "Static website development",
+          base: 3500,
+          includedPages: 5,
+          extraPage: 500,
+          design: { basic: 0, professional: 1800, advanced: 4000 },
+          addons: { contactForm: 650, gallery: 800, blog: 1500 },
+          seo: 1200,
+          content: 1500
+        },
+        wordpress: {
+          name: "WordPress website development",
+          base: 7500,
+          includedPages: 5,
+          extraPage: 650,
+          design: { basic: 0, professional: 2500, advanced: 5000 },
+          addons: { store: 6500, booking: 3000, migration: 1800 },
+          seo: 1800,
+          content: 2000
+        },
+        webapp: {
+          name: "Custom web application development",
+          base: 25000,
+          includedPages: 1,
+          extraPage: 1800,
+          design: { basic: 0, professional: 5000, advanced: 10000 },
+          addons: { database: 8500, accounts: 7000, dashboard: 9500, automation: 6500, integrations: 4500 },
+          seo: 3000,
+          content: 2500
+        }
+      };
+      const addonNames = {
+        contactForm: "Contact form",
+        gallery: "Image gallery",
+        blog: "News or article section",
+        store: "Online store",
+        booking: "Booking functionality",
+        migration: "Content migration",
+        database: "Database functionality",
+        accounts: "User accounts and login",
+        dashboard: "Dashboard and reporting",
+        automation: "Automated processes",
+        integrations: "External integrations"
+      };
+      const currency = new Intl.NumberFormat("en-ZA", {
+        style: "currency",
+        currency: "ZAR",
+        maximumFractionDigits: 0
+      });
+      const typeSelect = document.querySelector("#website-type");
+      const pagesInput = document.querySelector("#page-count");
+      const designSelect = document.querySelector("#design-level");
+      const estimateRange = document.querySelector("#estimate-range");
+      const estimateType = document.querySelector("#estimate-type");
+      const estimateBreakdown = document.querySelector("#estimate-breakdown");
+      const packageChoice = document.querySelector("#package-choice");
+      const budgetInput = document.querySelector("#estimated-budget");
+      const integrationsToggle = document.querySelector("#integrations-toggle");
+      const integrationCountField = document.querySelector("#integration-count-field");
+      const integrationCount = document.querySelector("#integration-count");
+      const enquiryForm = document.querySelector("#web-project-enquiry");
+      const enquiryStatus = document.querySelector("#enquiry-status");
+      const enquirySummaryWrap = document.querySelector("#enquiry-summary-wrap");
+      const enquirySummary = document.querySelector("#enquiry-summary");
+      const copyEnquirySummary = document.querySelector("#copy-enquiry-summary");
+      const depositNote = document.querySelector("#deposit-note");
+      const enquirySubmit = document.querySelector("#enquiry-submit");
+      let currentEstimate = { minimum: 3500, maximum: 4500, type: "static" };
+
+      const formatMoney = (amount) => currency.format(amount);
+
+      function updateFeatureVisibility() {
+        document.querySelectorAll("[data-feature-set]").forEach((group) => {
+          group.hidden = group.dataset.featureSet !== typeSelect.value;
+        });
+        const isWebApp = typeSelect.value === "webapp";
+        document.querySelector("#pages-label").textContent = isWebApp ? "Number of screens" : "Number of pages";
+        integrationCountField.hidden = !isWebApp || !integrationsToggle.checked;
+      }
+
+      function calculateEstimate() {
+        const type = prices[typeSelect.value] ? typeSelect.value : "static";
+        const packagePrice = prices[type];
+        const pageCount = Math.min(40, Math.max(1, Number.parseInt(pagesInput.value, 10) || 1));
+        pagesInput.value = String(pageCount);
+        const designLevel = designSelect.value in packagePrice.design ? designSelect.value : "basic";
+        const items = [{ name: "Starting price", amount: packagePrice.base }];
+        const extraPages = Math.max(0, pageCount - packagePrice.includedPages);
+        if (extraPages) {
+          items.push({
+            name: `${extraPages} additional ${type === "webapp" ? "screen(s)" : "page(s)"}`,
+            amount: extraPages * packagePrice.extraPage
+          });
+        }
+        const designCost = packagePrice.design[designLevel];
+        if (designCost) items.push({ name: `${designLevel[0].toUpperCase()}${designLevel.slice(1)} design`, amount: designCost });
+
+        document.querySelectorAll("[data-addon]").forEach((input) => {
+          const addon = input.dataset.addon;
+          if (!input.checked || !(addon in packagePrice.addons)) return;
+          const quantity = addon === "integrations"
+            ? Math.min(10, Math.max(1, Number.parseInt(integrationCount.value, 10) || 1))
+            : 1;
+          if (addon === "integrations") integrationCount.value = String(quantity);
+          items.push({ name: quantity > 1 ? `${addonNames[addon]} (${quantity})` : addonNames[addon], amount: packagePrice.addons[addon] * quantity });
+        });
+        if (document.querySelector("#seo-option").checked) items.push({ name: "SEO setup", amount: packagePrice.seo });
+        if (document.querySelector("#content-option").checked) items.push({ name: "Initial content creation", amount: packagePrice.content });
+
+        const minimum = items.reduce((total, item) => total + item.amount, 0);
+        const maximum = Math.ceil((minimum * 1.2) / 500) * 500;
+        currentEstimate = { minimum, maximum, type };
+        estimateRange.textContent = `${formatMoney(minimum)} – ${formatMoney(maximum)}`;
+        estimateType.textContent = packagePrice.name;
+        budgetInput.value = `${formatMoney(minimum)} – ${formatMoney(maximum)} (estimate only)`;
+        estimateBreakdown.replaceChildren();
+        items.forEach((item) => {
+          const row = document.createElement("li");
+          row.textContent = `${item.name}: ${formatMoney(item.amount)}`;
+          estimateBreakdown.append(row);
+        });
+      }
+
+      function updateEstimate() {
+        updateFeatureVisibility();
+        calculateEstimate();
+      }
+
+      typeSelect.addEventListener("change", () => {
+        packageChoice.value = typeSelect.value;
+        updateEstimate();
+      });
+      packageChoice.addEventListener("change", () => {
+        typeSelect.value = packageChoice.value;
+        pagesInput.value = typeSelect.value === "webapp" ? "1" : "5";
+        updateEstimate();
+      });
+      document.querySelectorAll("#estimate input, #estimate select").forEach((input) => {
+        input.addEventListener("input", updateEstimate);
+        input.addEventListener("change", updateEstimate);
+      });
+      document.querySelectorAll("[data-select-package]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const type = button.dataset.selectPackage;
+          typeSelect.value = type;
+          packageChoice.value = type;
+          pagesInput.value = type === "webapp" ? "1" : "5";
+          updateEstimate();
+        });
+      });
+      document.querySelectorAll('input[name="enquiryType"]').forEach((input) => {
+        input.addEventListener("change", () => {
+          const wantsDeposit = enquiryForm.querySelector('input[name="enquiryType"]:checked').value === "deposit";
+          depositNote.hidden = !wantsDeposit;
+          enquirySubmit.textContent = wantsDeposit ? "Prepare Deposit Enquiry (No Payment)" : "Prepare Custom Quote Enquiry";
+        });
+      });
+
+      const today = new Date();
+      const localToday = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+      document.querySelector("#completion-date").min = localToday;
+
+      enquiryForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!enquiryForm.reportValidity()) return;
+
+        const formData = new FormData(enquiryForm);
+        const enquiryType = formData.get("enquiryType") === "deposit" ? "Deposit discussion after confirmed quotation" : "Custom quote request";
+        const selectedFeatures = [...document.querySelectorAll(`[data-feature-set="${currentEstimate.type}"] [data-addon]:checked`)]
+          .map((input) => input.dataset.addon === "integrations"
+            ? `${addonNames[input.dataset.addon]} (${integrationCount.value})`
+            : addonNames[input.dataset.addon]);
+        const summary = [
+          "THE INNOVATORS — Web Development Project Enquiry",
+          `Enquiry option: ${enquiryType}`,
+          `Name: ${formData.get("fullName")}`,
+          `Email: ${formData.get("email")}`,
+          `Phone or WhatsApp: ${formData.get("phone")}`,
+          `Selected service: ${prices[currentEstimate.type].name}`,
+          `Pages or screens: ${pagesInput.value}`,
+          `Design preference: ${designSelect.options[designSelect.selectedIndex].text}`,
+          `Additional features: ${selectedFeatures.length ? selectedFeatures.join(", ") : "None selected"}`,
+          `SEO setup: ${document.querySelector("#seo-option").checked ? "Requested" : "Not requested"}`,
+          `Content creation: ${document.querySelector("#content-option").checked ? "Requested" : "Not requested"}`,
+          `Estimated budget: ${formatMoney(currentEstimate.minimum)} – ${formatMoney(currentEstimate.maximum)} (indicative only)`,
+          `Desired completion date: ${formData.get("completionDate")}`,
+          "",
+          "Project description:",
+          formData.get("projectDescription"),
+          "",
+          "The estimate is not a confirmed quotation. A 50% deposit applies only to the confirmed project quotation. No payment has been made."
+        ].join("\n");
+        enquirySummary.value = summary;
+        enquirySummaryWrap.hidden = false;
+        enquiryStatus.style.display = "block";
+        enquiryStatus.textContent = "Your enquiry summary is ready below, but this page is not connected to a submission service. Nothing has been sent or saved. Copy the summary to share it through a confirmed company contact channel.";
+        enquirySummaryWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      copyEnquirySummary.addEventListener("click", async () => {
+        if (!navigator.clipboard || typeof navigator.clipboard.writeText !== "function") {
+          enquiryStatus.textContent = "Clipboard access is unavailable in this browser. Select the summary above to copy it. Nothing has been sent.";
+          enquirySummary.focus();
+          enquirySummary.select();
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(enquirySummary.value);
+          enquiryStatus.textContent = "The summary was copied to your clipboard. Nothing has been sent to THE INNOVATORS.";
+        } catch {
+          enquiryStatus.textContent = "The browser could not copy the summary. Select the text above to copy it. Nothing has been sent.";
+          enquirySummary.focus();
+          enquirySummary.select();
+        }
+      });
+
+      updateEstimate();
+    })();
+  </script>
+</body>
+</html>
